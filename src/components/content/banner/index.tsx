@@ -1,78 +1,57 @@
-import { useEffect, useRef } from 'react';
+import { useTheme } from 'next-themes';
 import styles from '../index.module.scss';
-import Star from './star';
 export default function Banner() {
-  const starRef = useRef<HTMLDivElement>(null);
+  const { resolvedTheme } = useTheme();
 
-  const renderStar = () => {
-    const StarCount = 800;
-    for (let index = 0; index < StarCount; index++) {
-      const star = document.createElement('div');
-      star.className = styles.star;
-      const s = 0.2 + Math.random() * 1;
-      const curR = StarCount + Math.random() * 300;
-      star.style.transformOrigin = `0 0 ${curR}px`;
-      star.style.transform = `translate3d(0,0,-${curR}px) rotateY(${
-        Math.random() * 360
-      }deg) rotateX(${Math.random() * -50}deg) scale(${s}, ${s})`;
-      starRef.current!.append(star);
-    }
-  };
-  useEffect(() => {
-    if (starRef.current) {
-      renderStar();
-    }
-  }, [starRef]);
   return (
     <div className={styles.star__background}>
-      <div className={styles.loading}>
-        <p>
-          <span>Handsome-CSS..</span>
-          😍Handsome CSS In Coming!!!
-        </p>
-        <h1 id={styles.master}>
-          <div className="mb-4"> 超多漂亮的UI组件 ..</div>
-          <div id={styles.scroller}>
-            <div className={styles.scroller__item}>
-              “ 并且完全开源 MIT License. ”{' '}
-            </div>
-            <div className={styles.scroller__item}>
-              “ 来自于互联网各国平面设计师. ”{' '}
-            </div>
-            <div className={styles.scroller__item}>
-              “ 使用纯HTML + CSS 动画实现. ”
-            </div>
-            <div className={styles.scroller__item}>
-              “ 无任何JavaScript的CSS3动画. ”
-            </div>
-            <div className={styles.scroller__item}>
-              “ FxxK JS, 纯爷们只用CSS. ”
-            </div>
-            <div className={styles.scroller__item}>
-              “ 来自于海内外平面设计师. ”
-            </div>
-            <div className={styles.scroller__item}>“ Copy到你的项目中. ”</div>
-            <div className={styles.scroller__item}>“ 帮助你提高审美. ”</div>
-            <div className={styles.scroller__item}>
-              “ Funny coder （肥宅或艺术家 ”
-            </div>
-            <div className={styles.scroller__item}>
-              “ 并且完全开源 MIT License. ”
-            </div>
+      <div className={styles.container}>
+        {resolvedTheme === 'light' ? (
+          <div className={styles.area}>
+            <ul className={styles.circles}>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
           </div>
-        </h1>
+        ) : (
+          <div className={styles.background}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        )}
+        <div className={styles.title}>
+          Fall in <span className="text-[#ff5858]">love</span> with
+          <span className="text-[#0071e2]"> css</span>
+        </div>
+        <div className={styles.sub__title}>
+          <h2>
+            Amazingly <span>handsome Open-Source</span> UI components made with
+            HTML and CSS
+          </h2>
+          <p>
+            Thank you to everyone who contributes to the cause and art of open
+            source :)
+          </p>
+        </div>
       </div>
-      <div className={styles.wrap__phone}>
-        <section className={styles.container}>
-          <h1>
-            <span className={styles.title}>very awesome ui</span>
-            <span className={styles.title}>made by</span>
-            <span className={styles.title}>css & html</span>
-          </h1>
-        </section>
-      </div>
-      <Star />
-      {/* <div className={styles.stars} ref={starRef}></div> */}
     </div>
   );
 }

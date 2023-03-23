@@ -5,12 +5,11 @@ export default function linkGroup() {
     <nav className="flex items-center mr-10">
       <ul className="flex items-center">
         <li className="mx-4 cursor-pointer">
-          <Link href={'/'} className={styles.nav__link} data-name="家 Home">
-            家 Home
-          </Link>
-        </li>
-        <li className="mx-4 cursor-pointer">
-          <Link href={'/show-all'} className={styles.nav__link} data-name="😍 Show All">
+          <Link
+            href={'/show-all'}
+            className={styles.nav__link}
+            data-name="😍 Show All"
+          >
             😍 Show All
           </Link>
         </li>
@@ -18,9 +17,9 @@ export default function linkGroup() {
           <Link
             href={'/about'}
             className={styles.nav__link}
-            data-name="阿这"
+            data-name="👋 你好"
           >
-            阿这
+            👋 你好
           </Link>
         </li>
       </ul>
